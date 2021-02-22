@@ -1,33 +1,19 @@
-# REPO NAME: EagleTemplate-new
-## License: CERN Open Hardware Licence v1.2
+# REPO NAME: MRCS-Twin-Coil-Driver
 ## License: Creative Commons Attribution-NonCommercial-ShareAlike
 
-Delete one of the license lines above, and replace this line and following with the contents of the doc.md file
+Twin Coil Machines present some challenges:
 
-### How to use this template:
+    They tend to slam the points into the stock rails, eventually damaging the connection to the throwbar and the spikes or solder holding the stock rails down 
+    can loosen or break.  They make a lot of electrical noise when the power is removed from the coils, which gets into other electronics, causing false operation.
+    The coils will overheat and become damaged, if not catch fire, if current is applied for an extended period.
+    
+    In the past, Capacitive Discharge (CD) supplies were used to make an affordable supply that would protect the coil by not recharging while connected and limiting
+    the constant current in case the controls failed and permanently energized the coil.
 
-  1. Create a repo using this template, 
-  2. Use eagle to create your project
-  3. Edit the other text files to describe your project
-  4. git add .
-  5. git commit -m "add to git"
-  6. git tag -a 1.0 -m 1.0
-  7. git push origin 1.0
-  
+Our design drives both mild (Atlas, Bachmann, Lifelike, Peco) and "Nasty" PFM, Tenshodo, Ken Kidder, NJ International Twin Coil type machines.  The Twin Coil Driver
+(TCD) shapes the pulses driving the switch machines to soften both the physical and electrical blow, reducing electrical noise and physical impact.  Pulse timing is
+done in hardware (no chance of a software hang leaving power on).  The TCD works with CD power supplies and modern power supplies such as those used for LEDs, or
+inexpensive bench supplies.  
 
-This is a template for new eagle designs.
-It includes a blank schematic with a title block ready for editing and a
-default PCB that uses the SPCoast.lbr's BOARD component, Fiducials and an OSHW logo.
-
-First line: A short description of the project, used as a subtitle or tagline
-
-Remaining lines: a verbose changelog of what makes this "git version" different from the last.
-Use this space (in Markdown format) to describe the context and details of the changes.
-This section should be 5 to 20 lines of interesting detail; each version tab in the project will 
-display this text to help the reader understand why this version is differnet...
-
-The published project on the SPCoast.github.io website will
-include the relevant git commit messages as a terse, high level
-changelog, so don't replicate those messages here.
-
-
+The Twin Coil Driver has internal spike suppression diodes.  Input is logic level and the coils are fired on the rising and falling edge, so a simple toggle switch 
+or logic level input controls the machine.
